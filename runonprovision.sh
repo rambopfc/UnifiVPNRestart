@@ -20,4 +20,5 @@ touch /var/log/vpnlogs.log
 chmod 777 /var/log/vpnlogs.log
 
 #add task to run every day at 3am
-sudo ecbo "0 3 * * * /config/scripts/restartvpn.sh" >> /etc/cron.d/vpnrestart
+touch /var/spool/cron/crontabs/root
+{ crontab -l; echo "0 3 * * * /config/scripts/restartvpn.sh"; } | crontab -
